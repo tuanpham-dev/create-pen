@@ -5,10 +5,11 @@ export interface TemplateData {
 	html: string,
 	css: string,
 	js: string,
-	indentType: string,
-	indentSize: number
+	indentStyle: string,
+	indentSize: string,
+	preprocessors: string[]
 }
 
 export function render(content: string, data: TemplateData) {
-	return ejs.render(content, data)
+	return ejs.render(content, data, {delimiter: '@'})
 }
