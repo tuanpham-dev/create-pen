@@ -2,7 +2,8 @@ const gulp = require('gulp')
 const del = require('del')
 
 require('./gulp-tasks/assets')<@ if (html === 'pug') { @>
-require('./gulp-tasks/pug')<@ } @><@ if (css === 'scss' || css === 'sass') { @>
+require('./gulp-tasks/pug')<@ } else { @>
+require('./gulp-tasks/liquid')<@ } @><@ if (css === 'scss' || css === 'sass') { @>
 require('./gulp-tasks/sass')<@ } else if (css === 'postcss') { @>
 require('./gulp-tasks/postcss')<@ } @><@ if (js === 'coffee') { @>
 require('./gulp-tasks/coffee')<@ } else if (js === 'typescript') { @>

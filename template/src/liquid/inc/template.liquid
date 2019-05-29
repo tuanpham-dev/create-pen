@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="images/favicon.png" rel="shortcut icon" type="image/png">
+	<title>{{ config.pageTitle }}</title>
+
+	{% if config.cssBase == 'nomalize' %}
+		<link href="//necolas.github.io/normalize.css/latest/normalize.css" rel="stylesheet">
+	{% elsif config.cssBase == 'reset' %}
+		<link href="//meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet">
+	{% endif %}
+
+	{% for css in config.stylesheets %}
+		<link href="{{ css }}" rel="stylesheet">
+	{% endfor %}
+
+	{% for js in config.scripts %}
+		<script src="{{ js }}"></script>
+	{% endfor %}
+</head>
+<body>
+	{% block content %}{% endblock %}
+</body>
+</html>

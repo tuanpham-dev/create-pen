@@ -66,8 +66,8 @@ const indentStyle = argv.indent
 const indentSize = <string> argv.indentSize
 let preprocessors = []
 
-if (html === 'pug') {
-	preprocessors.push(html)
+if (html === 'pug' || html === 'liquid' || html === 'html') {
+	preprocessors.push(html === 'html' ? 'liquid' : html)
 }
 
 if (css === 'scss' || css === 'sass' || css === 'postcss') {
@@ -111,6 +111,11 @@ switch (html) {
 		createFile(path.join(__dirname, 'template/gulp-tasks/pug.js'), path.join(projectDir, 'gulp-tasks/pug.js'), templateData)
 		createFile(path.join(__dirname, 'template/src/pug/index.pug'), path.join(projectDir, 'src/pug/index.pug'), templateData)
 		createFile(path.join(__dirname, 'template/src/pug/inc/template.pug'), path.join(projectDir, 'src/pug/inc/template.pug'), templateData)
+		break
+	default:
+		createFile(path.join(__dirname, 'template/gulp-tasks/liquid.js'), path.join(projectDir, 'gulp-tasks/liquid.js'), templateData)
+		createFile(path.join(__dirname, 'template/src/liquid/index.liquid'), path.join(projectDir, 'src/liquid/index.liquid'), templateData)
+		createFile(path.join(__dirname, 'template/src/liquid/inc/template.liquid'), path.join(projectDir, 'src/liquid/inc/template.liquid'), templateData)
 		break
 }
 
