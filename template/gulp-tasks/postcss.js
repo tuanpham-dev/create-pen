@@ -1,4 +1,3 @@
-const config = require('../config')
 const gulp = require('gulp')
 const plumber = require('gulp-plumber')
 const log = require('fancy-log')

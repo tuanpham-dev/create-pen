@@ -2,6 +2,7 @@ import * as ejs from 'ejs'
 
 export interface TemplateData {
 	projectName: string,
+	projectSlug: string,
 	html: string,
 	css: string,
 	js: string,

@@ -7,7 +7,7 @@ import * as template from './template'
 export function createProject(projectPath: string) {
 	if (fs.existsSync(projectPath)) {
 		console.log(chalk.red(`Folder ${projectPath} exists. Delete or use another name.`))
-		return false
+		return true
 	}
 
 	fs.mkdirSync(projectPath)

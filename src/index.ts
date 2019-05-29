@@ -1,4 +1,4 @@
-#!/usr/bin/env/ node
+#!/usr/bin/env node
 
 import * as path from 'path'
 import * as yargs from 'yargs'
@@ -46,8 +46,7 @@ const argv = yargs.usage('Usage: $0 <pen_name> [options]')
 		alias: 's',
 		nargs: 1,
 		describe: 'Indent size',
-		choices: ['4', '2'],
-		default: '4',
+		default: 4,
 		global: true
 	})
 	.argv
@@ -58,7 +57,8 @@ if (argv._.length === 0) {
 }
 
 const projectName = argv._[0]
-const projectDir = path.join(process.cwd(), slugify(projectName))
+const projectSlug = slugify(projectName)
+const projectDir = path.join(process.cwd(), projectSlug)
 const html = argv.html
 const css = argv.css
 const js = argv.js
@@ -71,7 +71,7 @@ if (html === 'pug') {
 }
 
 if (css === 'scss' || css === 'sass' || css === 'postcss') {
-	preprocessors.push(css)
+	preprocessors.push(css === 'scss' ? 'sass' : css)
 }
 
 if (js === 'coffee' || js === 'typescript') {
@@ -80,6 +80,7 @@ if (js === 'coffee' || js === 'typescript') {
 
 const templateData: TemplateData = {
 	projectName,
+	projectSlug,
 	html,
 	css,
 	js,
@@ -98,12 +99,12 @@ console.log('Creating files...')
 
 createFile(path.join(__dirname, 'template/.editorconfig'), path.join(projectDir, '.editorconfig'), templateData)
 createFile(path.join(__dirname, 'template/.gitignore'), path.join(projectDir, '.gitignore'), templateData)
-createFile(path.join(__dirname, 'template/config.json'), path.join(projectDir, 'config.json'), templateData)
 createFile(path.join(__dirname, 'template/gulpfile.js'), path.join(projectDir, 'gulpfile.js'), templateData)
 createFile(path.join(__dirname, 'template/package.json'), path.join(projectDir, 'package.json'), templateData)
 createFile(path.join(__dirname, 'template/gulp-tasks/assets.js'), path.join(projectDir, 'gulp-tasks/assets.js'), templateData)
 createFile(path.join(__dirname, 'template/gulp-tasks/server.js'), path.join(projectDir, 'gulp-tasks/server.js'), templateData)
 createFile(path.join(__dirname, 'template/images/favicon.png'), path.join(projectDir, 'images/favicon.png'))
+createFile(path.join(__dirname, 'template/src/config.json'), path.join(projectDir, 'src/config.json'), templateData)
 
 switch (html) {
 	case 'pug':
@@ -143,7 +144,7 @@ switch (js) {
 		createFile(false, path.join(projectDir, 'src/js/script.js'))
 }
 
-console.log('Install package...')
+console.log('Installing package...')
 
 if (!postProcess(projectDir)) {
 	process.exit()
@@ -151,4 +152,4 @@ if (!postProcess(projectDir)) {
 
 console.log('');
 console.log(chalk.green('Done.'));
-console.log(chalk.green(`Go into the project: cd ${projectName}`));
+console.log(chalk.green(`Go into the project: cd ${projectSlug}`));

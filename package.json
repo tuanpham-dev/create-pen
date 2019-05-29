@@ -1,6 +1,6 @@
 {
   "name": "create-pen",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "CLI tool for creating CodePen liked project.",
   "main": "./dist/index.js",
   "scripts": {
@@ -10,6 +10,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tuanpham-dev/create-pen.git"
+  },
+  "bin": {
+    "create-pen": "./dist/index.js"
   },
   "keywords": [
     "create",

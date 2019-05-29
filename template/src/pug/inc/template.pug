@@ -6,6 +6,18 @@ html(lang='en-US', class=config.htmlClass)
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, inital-scale=1.0')
 		link(href='images/favicon.png', rel='shortcut icon', type='image/png')
+
+		if (config.cssBase === 'normalize')
+			link(href='//necolas.github.io/normalize.css/latest/normalize.css', rel='stylesheet')
+		else if (config.cssBase === 'reset')
+			link(href='//meyerweb.com/eric/tools/css/reset/reset.css', rel='stylesheet')
+
+		each css in config.stylesheets
+			link(href=css, rel='stylesheet')
+
+		each js in config.scripts
+			script(src='js')
+
 		link(href='css/style.css', rel='stylesheet')
 		script(src='js/script.js')
 

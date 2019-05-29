@@ -1,5 +1,5 @@
 const gulp = require('gulp')
-const clean = require('gulp-clean')
+const del = require('del')
 
 require('./gulp-tasks/assets')<@ if (html === 'pug') { @>
 require('./gulp-tasks/pug')<@ } @><@ if (css === 'scss' || css === 'sass') { @>
@@ -10,8 +10,7 @@ require('./gulp-tasks/typescript')<@ } @>
 require('./gulp-tasks/server')
 
 gulp.task('clean', () => {
-	return gulp.src('dist')
-		.pipe(clean({read: false}))
+	return del('dist/**/*.*')
 })
 
 gulp.task('build', gulp.series('clean', gulp.parallel('assets'<@ if (preprocessors.length) { @><@- ', ' + preprocessors.map((p) => `'${p}'`).join(', ') @><@ } @>)))
