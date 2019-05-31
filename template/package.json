@@ -1,9 +1,11 @@
 {
   "name": "<@= projectSlug @>",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "scripts": {
     "start": "gulp dev",
-    "build": "gulp build"
+    "build": "gulp build"<@ if (css === 'sass') { @>,
+    "convert": "sass-convert --recursive src/sass --from sass --to scss"<@ } else if (css === 'scss') { @>,
+    "convert": "sass-convert --recursive src/sass --from scss --to sass"<@ } @>
   },
   "license": "MIT",
   "devDependencies": {
@@ -18,8 +20,7 @@
     "gulp-plumber": "^1.2.1"<@ if (html === 'pug') { @>,
     "gulp-pug": "^4.0.1"<@ } else { @>,
     "@tuanpham-dev/gulp-liquidjs": "0.0.3"<@ } @><@ if (css === 'sass' || css === 'scss') { @>,
-    "gulp-sass": "^4.0.2"<@ if (css === 'sass') { @>,
-    "sass-convert": "^0.5.2"<@ } @><@ } else if (css === 'postcss') { @>,
+    "gulp-sass": "^4.0.2"<@ } else if (css === 'postcss') { @>,
     "gulp-postcss": "^8.0.0"<@ } @><@ if (js === 'coffee') { @>,
     "gulp-coffee": "^3.0.3"<@ } else if (js === 'typescript') { @>,
     "gulp-typescript": "^5.0.1",

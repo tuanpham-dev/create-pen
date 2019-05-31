@@ -7,30 +7,32 @@ const liquid = require('@tuanpham-dev/gulp-liquidjs')
 const fs = require('fs')
 
 const errorHandler = (err) => {
-    log(err)
-    this.emit('end')
+	log(err)
+	this.emit('end')
 }
 
 const liquidCompile = (dev = false) => {
-    const config = JSON.parse(fs.readFileSync('src/config.json', 'utf8'))
+	const config = JSON.parse(fs.readFileSync('src/config.json', 'utf8'))
 
-    return gulp.src('src/liquid/*.liquid')
-        .pipe(plumber({errorHandler: errorHandler}))
-        .pipe(liquid({
-            engine: {
-                root: ['src/liquid', 'src/liquid/inc', 'src/liquid/templates', 'src/liquid/snippets']
-            },
-            data: {config: config}
-        }))
-        .pipe(beautify({
+	return gulp.src('src/liquid/*.liquid')
+		.pipe(plumber({errorHandler: errorHandler}))
+		.pipe(liquid({
+			engine: {
+				root: ['src/liquid', 'src/liquid/inc', 'src/liquid/templates', 'src/liquid/snippets'],
+				trimTagLeft: true,
+				trimTagRight: true
+			},
+			data: {config: config}
+		}))
+		.pipe(beautify({
 			indent_with_tabs: <@= indentStyle === 'tab' @>,
 			indent_size: <@= indentSize @>
 		}))
-        .pipe(changed(dev ? 'dev' : 'dist', {
-            extension: '.html',
-            hasChanged: changed.compareSha1Digest
-        }))
-        .pipe(gulp.dest(dev ? 'dev' : 'dist'))
+		.pipe(changed(dev ? 'dev' : 'dist', {
+			extension: '.html',
+			hasChanged: changed.compareSha1Digest
+		}))
+		.pipe(gulp.dest(dev ? 'dev' : 'dist'))
 }
 
 gulp.task('liquid', () => liquidCompile())

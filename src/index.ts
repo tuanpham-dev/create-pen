@@ -14,7 +14,7 @@ const argv = yargs.usage('Usage: $0 <pen_name> [options]')
 		alias: 'h',
 		nargs: 1,
 		describe: 'HTML preprocessor',
-		choices: ['html', 'pug', 'liquid', 'haml', 'slim'],
+		choices: ['html', 'pug', 'liquid'],
 		default: 'html',
 		global: true
 	})
