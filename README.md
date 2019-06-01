@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/tuanpham-dev/create-pen.svg?branch=master)](https://travis-ci.org/tuanpham-dev/create-pen)
 # Create Pen
 CLI tool for creating CodePen liked project.
 
