@@ -1,6 +1,6 @@
 {
   "name": "create-pen",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "CLI tool for creating CodePen liked project.",
   "main": "./dist/index.js",
   "scripts": {
