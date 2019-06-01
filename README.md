@@ -27,4 +27,4 @@ $ create-pen mypen -h pug -c scss -j typescript  create 'mypen' project with pug
 ```
 
 ## License
-Mit © Tuan Pham
+MIT © Tuan Pham
