@@ -44,4 +44,4 @@ $ npm run convert
 ``` 
 
 ## License
-Mit © Tuan Pham
+MIT © Tuan Pham
