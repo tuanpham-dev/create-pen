@@ -98,7 +98,7 @@ if (!createProject(projectDir)) {
 console.log('Creating files...')
 
 createFile(path.join(__dirname, 'template/.editorconfig'), path.join(projectDir, '.editorconfig'), templateData)
-createFile(path.join(__dirname, 'template/.gitignore'), path.join(projectDir, '.gitignore'), templateData)
+createFile(path.join(__dirname, 'template/gitignore'), path.join(projectDir, '.gitignore'), templateData)
 createFile(path.join(__dirname, 'template/gulpfile.js'), path.join(projectDir, 'gulpfile.js'), templateData)
 createFile(path.join(__dirname, 'template/package.json'), path.join(projectDir, 'package.json'), templateData)
 createFile(path.join(__dirname, 'template/gulp-tasks/assets.js'), path.join(projectDir, 'gulp-tasks/assets.js'), templateData)
