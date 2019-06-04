@@ -8,6 +8,7 @@ npm i -g create-pen
 ```
 
 ## Usage
+### Options
 ```bash
 $ create-pen --help
 Usage: create-pen <pen_name> [options]
@@ -25,6 +26,22 @@ Examples:
 $ create-pen mypen -h pug -c scss -j typescript  create 'mypen' project with pug as html, scss as css and typescript as javascript
 
 ```
+
+### Run Development Server
+```bash
+$ npm run dev
+```
+
+### Build Project
+```bash
+$ npm run build
+```
+
+### Convert Sass ⇄ SCSS
+If the CSS Proprocessor is `scss` or `sass`, you can run this command to convert `scss` to `sass` or `sass` to `scss`. Required Ruby Sass to do that.
+```bash
+$ npm run convert
+``` 
 
 ## License
 Mit © Tuan Pham
