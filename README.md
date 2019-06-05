@@ -29,12 +29,12 @@ $ create-pen mypen -h pug -c scss -j typescript  create 'mypen' project with pug
 
 ### Run Development Server
 ```bash
-$ npm run dev
+$ npm start
 ```
 
 ### Build Project
 ```bash
-$ npm run build
+$ npm build
 ```
 
 ### Convert Sass ⇄ SCSS
