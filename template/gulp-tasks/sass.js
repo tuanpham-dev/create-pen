@@ -12,7 +12,7 @@ const errorHandler = (err) => {
 }
 
 const sassCompile = (dev = false) => {
-	return gulp.src('src/sass/**/*.+(sass|scss)')
+	return gulp.src('src/sass/**/*.+(<@ if (css === 'scss') { @>sass|scss<@ } else { @>scss|sass<@ } @>)')
 		.pipe(plumber({errorHandler: errorHandler}))
 		.pipe(sass())
 		.pipe(autoprefixer('last 2 version'))
